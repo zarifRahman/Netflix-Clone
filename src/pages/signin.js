@@ -1,19 +1,39 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { Form } from '../components';
 import { FooterContainer } from '../containers/footer';
 import HeaderContainer from '../containers/header';
+import { FirebaseContext } from '../context/firebase';
+import * as ROUTES from "../constants/routes";
 
 const Signin = () => {
-  const [emailAddress, setEmailAddress] = useState();
-  const [password, setPassword] = useState();
+
+  const history = useHistory();
+  // destructure firebase from index.js
+  const { firebase } = useContext(FirebaseContext)
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
 
   // check form inputs are valids
   const isInValid = password === '' || emailAddress === '';
+
   const handleSignIn = (e) => {
     e.preventDefault();
-    
+    // firebase works here
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(emailAddress, password)
+      .then(() => {
+        // push to the browse page
+        history.push(ROUTES.BROWSE)
+      }).catch((error) => {
+        setEmailAddress('');
+        setPassword('');
+        setError(error.message);
+      })
+
   };
 
   return (
@@ -35,8 +55,8 @@ const Signin = () => {
               value={password}
               onChange={({ target }) => setPassword(target.value)}
             />
-            <Form.Submit disable={isInValid} type='submit'>
-              Submit
+            <Form.Submit disabled={isInValid} type='submit'>
+              Sign In
             </Form.Submit>
 
             <Form.Text>
