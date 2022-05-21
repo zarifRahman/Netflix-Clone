@@ -17,8 +17,13 @@ export default function SelectProfileContainer({user, setProfile}) {
         <Profiles.Title>Who's watching?</Profiles.Title>
         <Profiles.List>
           <Profiles.User
-            // onClick={}
-            // data-testid='user-profile'
+            onClick={() =>
+              setProfile({
+                displayName: user.displayName,
+                photoUrl: user.photoURL,
+              })
+            }
+            data-testid='user-profile'
           >
             <Profiles.Picture src={user.photoURL} />
             <Profiles.Name>{user.displayName}</Profiles.Name>
