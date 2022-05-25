@@ -1,5 +1,18 @@
  import React from 'react'
- import { Container, Background, Group, Logo, Profile, Dropdown, Link, PlayButton, FeatureCallOut, Text, ButtonLink } from "./styles/header";
+ import {
+   Feature,
+   Container,
+   Background,
+   Group,
+   Logo,
+   Profile,
+   Dropdown,
+   Link,
+   PlayButton,
+   FeatureCallOut,
+   Text,
+   ButtonLink,
+ } from "./styles/header";
  import { Link as ReachRouterLink } from "react-router-dom";
 
  export default function Header({ bg = true, children, ...restProps }) {
@@ -11,7 +24,15 @@
      children
    );
  };
- 
+//  Header feature
+Header.Feature = function HeaderFeature({children, ...restProps}) {
+  return <Feature {...restProps}>{children}</Feature>;
+}
+
+Header.FeatureCallOut = function FeatureCallOut({ children, ...restProps }) {
+  return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
+};
+
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
 return <Container {...restProps}>{children}</Container>;
 };

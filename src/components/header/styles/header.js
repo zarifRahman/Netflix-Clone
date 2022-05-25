@@ -26,7 +26,8 @@ export const Container = styled.div`
 export const Logo = styled.img`
   height: 32px;
   width: 108px;
-  margin-right: 40px;
+  /* margin-right: 40px; */
+  margin: 40px;
 
   @media (min-width: 1449px){
     height: 45px;
@@ -36,12 +37,33 @@ export const Logo = styled.img`
 `;
 export const Group = styled.div``;
 export const Profile = styled.div``;
-export const Feature = styled(Container)``;
+export const Feature = styled(Container)`
+  padding: 150px 0 500px 0;
+  flex-direction: column;
+  align-items: normal;
+  width: 50%;
+  @media (max-width: 1100px){
+    /* display: none; */
+  }
+`;
 export const Dropdown = styled.div``;
 export const Link = styled.p``;
 export const PlayButton = styled.button``;
-export const FeatureCallOut = styled.h2``;
-export const Text = styled.p``;
+export const Text = styled.p`
+  color: white;
+  font-size: 22px;
+  line-height: normal;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
+  margin: 0;
+`;
+export const FeatureCallOut = styled.h2`
+  color: white;
+  font-size: 50px;
+  line-height: normal;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+  margin: 0;
+  margin-bottom: 20px;
+`;
 export const ButtonLink = styled(ReachRouterLink)`
   display: block;
   background-color: #e50914;
